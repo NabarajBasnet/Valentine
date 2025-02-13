@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💖</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ff99cc;
+            font-family: 'Arial', cursive;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 25px;
+            animation: fall 3s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #ff0066;
+            font-size: 2.5em;
+            margin: 20px 0;
+            animation: zoom 2s infinite;
+        }
+
+        @keyframes zoom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 20px;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .photo-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .buttons {
+            margin: 30px 0;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #yesBtn {
+            background: #ff0066;
+            color: white;
+        }
+
+        #noBtn {
+            background: #333;
+            color: white;
+            position: relative;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #response {
+            font-size: 3em;
+            margin: 20px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .surprise-button {
+            padding: 20px 40px;
+            font-size: 1.5em;
+            background: #ff0066;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="surprise-button" onclick="startSurprise()">Get Surprise 💝</button>
+
+        <div class="hidden" id="mainContent">
+            <h1>My Dearest Trishta 💖</h1>
+            
+            <div class="photo-gallery">
+                <img src="./media/1.jpg" alt="Our Memory">
+                <img src="./media/4.jpg" alt="Our Memory">
+                <img src="./media/5.jpeg" alt="Our Memory">
+                <img src="./media/6.jpeg" alt="Our Memory">
+            </div>
+
+            <h2>Every moment with you feels like a beautiful dream... 🌸</h2>
+            <h2>Will you make me the happiest person and be my Valentine? 💍</h2>
+
+            <div class="buttons">
+                <button id="yesBtn" onclick="showResponse(true)">YES! 💖</button>
+                <button id="noBtn" onmouseover="moveButton()" onclick="showResponse(false)">No 😢</button>
+            </div>
+
+            <div id="response" class="hidden"></div>
+        </div>
+    </div>
+
+    <script>
+        
+        function startSurprise() {
+            document.querySelector('.surprise-button').classList.add('hidden');
+            document.getElementById('mainContent').classList.remove('hidden');
+            createHearts();
+        }
+
+        function createHearts() {
+            }
+
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            noBtn.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
+        }
+
+        function showResponse(yes) {
+            const response = document.getElementById('response');
+            if (yes) {
+                response.innerHTML = 'YAY! 💖🎉😍 You just made me the happiest! 💐 I love you!';
+                response.style.color = '#ff0066';
+                document.querySelectorAll('button').forEach(b => b.remove());
+            } else {
+                response.innerHTML = 'Please reconsider... 😢💔 My heart beats only for you 🌹';
+                response.style.color = '#333';
+            }
+            response.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
