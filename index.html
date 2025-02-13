@@ -234,7 +234,7 @@
             </div>
 
             <canvas id="fireworks"></canvas>
-            <div id="response" class="hidden"></div>
+            <div id="response" class="hidden" style="font-family: Courgette-Regular;"></div>
         </div>
     </div>
 
@@ -256,6 +256,12 @@
             if (yes) {
                 let audio = new Audio('./kisses-100568.mp3');
                 audio.play();
+                let iloveyou = new Audio('./i-love-you-cartoon-voice-136531.mp3');
+                iloveyou.play();
+                setTimeout(() => {
+                    let music = new Audio('./90x27s-rampb-guitar-loop-171092.mp3');
+                    music.play();
+                }, 2000);
                 response.innerHTML = '💖 YES! My Love! 💍 You are my world, my forever. I can’t wait to cherish every moment with you! 🎉';
                 document.body.style.background = "#ffffff";
                 startFireworks();
